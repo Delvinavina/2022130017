@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         $Product = Product::paginate(10);
-        return view('Products.index', compact('Product'));
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -22,12 +22,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('Products.create');
+        return view('products.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -59,7 +56,7 @@ class ProductController extends Controller
         'quantity' => $validated['quantity'],
         'avatar' => $validated['avatar'] ?? null,
        ]);
-       return redirect()->route('Products.index')->with('succes', 'Product input successfully.');
+       return redirect()->route('products.index')->with('succes', 'Product input successfully.');
 }
 
     /**
@@ -67,7 +64,7 @@ class ProductController extends Controller
      */
     public function show(Product $Product)
     {
-        return view('Products.show', compact('Product'));
+        return view('products.show', compact('products'));
     }
 
     /**
@@ -75,7 +72,7 @@ class ProductController extends Controller
      */
     public function edit(Product $Product)
     {
-        return view('Products.edit' , compact('Product'));
+        return view('products.edit' , compact('products'));
     }
 
     /**
@@ -100,7 +97,6 @@ class ProductController extends Controller
 
             $imagePath = $request->file('avatar')->storePublicly('public/images');
 
-//hapus file existing
 if ($Product->avatar) {
     Storage::delete($Product->avatar);
     }
@@ -120,7 +116,7 @@ if ($Product->avatar) {
             'avatar'=> $validated['avatar'] ?? $Product->avatar,
            ]);
 
-           return redirect()->route('Products.index')->with('succes', 'Product Update successfully.');
+           return redirect()->route('products.index')->with('succes', 'Product Update successfully.');
 }
 
     /**
@@ -132,6 +128,6 @@ if ($Product->avatar) {
             Storage::delete($Product->avatar);
         }
         $Product->delete();
-        return redirect()->route('Products.index')->with('succes', 'Product Deleted successfully!');
+        return redirect()->route('products.index')->with('succes', 'Product Deleted successfully!');
     }
 }

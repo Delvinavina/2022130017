@@ -8,11 +8,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $guest_name = 'Vina!';
-        return view('home', compact('guest_name'));
+        $products = 'Vina!';
+        return view('home', compact('products'));
     }
 
-    public function getGuest($id, $serial_number = -1)
+    public function getProduct($id, $serial_number = -1)
     {
 
         return view('Product-detail', compact('id','serial_number'));

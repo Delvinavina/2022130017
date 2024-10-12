@@ -14,7 +14,7 @@
             <td>{{ $Product->id }}</td>
         </tr>
         <tr>
-            <th scope="row">Name</th>
+            <th scope="row">name</th>
             <td>{{ $Product->name }}</td>
         </tr>
         <tr>

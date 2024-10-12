@@ -6,7 +6,7 @@
 <div class="mt-4 p-5 bg-black text-white rounded">
     <h1>All Product</h1>
 
-    <a href="{{ route('Product.create') }}" class="btn btn-primary btn-sm">Create New Product</a>
+    <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm">Create New Product</a>
 </div>
 
 @if (session()->has('success'))
@@ -36,7 +36,7 @@
             <tr>
                 <th scope="row">{{  $Product->id }}</th>
                 <td>
-                    <a href="{{ route('Product.show', $Product) }}">
+                    <a href="{{ route('products.show', $Product) }}">
                     {{ $Product->name }}
                     </a>
                 </td>
@@ -49,11 +49,11 @@
                 <td>{{ $Product->created_at }}</td>
                 <td>{{ $Product->updated_at }}</td>
                 <td>
-                    <a href="{{ route('Product.edit' , $Product)}}" class="btn btn-primary btn-sm">
+                    <a href="{{ route('products.edit' , $Product)}}" class="btn btn-primary btn-sm">
                         Edit
                     </a>
 
-                    <form action={{ route('Product.destroy' , $guest)}} method="POST" class="d-inline-block">
+                    <form action={{ route('products.destroy' , $Product)}} method="POST" class="d-inline-block">
                             @method('DELETE')
                             @csrf
 
